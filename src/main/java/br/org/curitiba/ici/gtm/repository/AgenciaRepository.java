@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.repositorys;
+package br.org.curitiba.ici.gtm.repository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.controller;
+package br.org.curitiba.ici.gtm.web.controller;
 
 
 
@@ -16,10 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 
-import br.org.curitiba.ici.gtm.controller.request.AtualizacaoAgenciaRequest;
-import br.org.curitiba.ici.gtm.controller.request.NovaAgenciaRequest;
-import br.org.curitiba.ici.gtm.controller.response.AgenciaResponse;
-import br.org.curitiba.ici.gtm.entity.vo.IAtualizacaoAgencia;
+import br.org.curitiba.ici.gtm.web.controller.request.AtualizacaoAgenciaRequest;
+import br.org.curitiba.ici.gtm.web.controller.request.NovaAgenciaRequest;
+import br.org.curitiba.ici.gtm.web.controller.response.AgenciaResponse;
 import io.restassured.http.ContentType;
 
 
@@ -66,7 +65,7 @@ class AgenciaControllerIntegrationTest {
 	
 	@Test
 	void deveAtualizarUmaAgencia() {
-		IAtualizacaoAgencia atualizacao = new AtualizacaoAgenciaRequest(1, 
+		AtualizacaoAgenciaRequest atualizacao = new AtualizacaoAgenciaRequest(1, 
 				2, 
 				"A", 
 				false);
@@ -82,7 +81,7 @@ class AgenciaControllerIntegrationTest {
 	
 	@Test
 	void naoDeveAtualizarUmaAgenciaNaoExistente() {
-		IAtualizacaoAgencia atualizacao = new AtualizacaoAgenciaRequest(1, 
+		AtualizacaoAgenciaRequest atualizacao = new AtualizacaoAgenciaRequest(1, 
 				2, 
 				"A", 
 				false);

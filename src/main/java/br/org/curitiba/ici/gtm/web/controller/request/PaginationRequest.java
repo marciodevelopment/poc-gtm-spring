@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.controller.request;
+package br.org.curitiba.ici.gtm.web.controller.request;
 
 
 

@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.controller.response;
+package br.org.curitiba.ici.gtm.web.controller.response;
 
 import br.org.curitiba.ici.gtm.entity.PessoaEntity;
 import lombok.Getter;

@@ -13,9 +13,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.org.curitiba.ici.gtm.entity.AgenciaEntity;
 import br.org.curitiba.ici.gtm.entity.BancoEntity;
 import br.org.curitiba.ici.gtm.entity.PessoaEntity;
-import br.org.curitiba.ici.gtm.exceptions.ConstraintViolationException;
-import br.org.curitiba.ici.gtm.exceptions.NotFoundException;
-import br.org.curitiba.ici.gtm.repositorys.AgenciaRepository;
+import br.org.curitiba.ici.gtm.exception.ConstraintViolationException;
+import br.org.curitiba.ici.gtm.exception.NotFoundException;
+import br.org.curitiba.ici.gtm.repository.AgenciaRepository;
 
 @ExtendWith(MockitoExtension.class)
 class AgenciaServiceTest {

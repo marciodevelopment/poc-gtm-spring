@@ -10,11 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import br.org.curitiba.ici.gtm.entity.AgenciaEntity;
-import br.org.curitiba.ici.gtm.entity.BancoEntity;
-import br.org.curitiba.ici.gtm.entity.vo.IAtualizacaoAgencia;
-import br.org.curitiba.ici.gtm.exceptions.ConstraintViolationException;
-import br.org.curitiba.ici.gtm.exceptions.NotFoundException;
-import br.org.curitiba.ici.gtm.repositorys.AgenciaRepository;
+import br.org.curitiba.ici.gtm.exception.ConstraintViolationException;
+import br.org.curitiba.ici.gtm.exception.NotFoundException;
+import br.org.curitiba.ici.gtm.repository.AgenciaRepository;
 import br.org.curitiba.ici.gtm.type.OrderDirection;
 import lombok.RequiredArgsConstructor;
 
@@ -50,24 +48,8 @@ public class AgenciaService {
 	}
 
 	public AgenciaEntity update(AgenciaEntity request) {
+		checkBancoParaPersistirAgencia(request);
 		return agenciaRepository.save(request);
-	}
-	
-	public AgenciaEntity update(Integer codPessoa, IAtualizacaoAgencia atualizacaoAgencia) {
-		Optional<AgenciaEntity> possivelAgencia = agenciaRepository.findById(codPessoa);
-		if (possivelAgencia.isEmpty()) {
-			throw new NotFoundException("codPessoa", "Não existe agência para o código de pessoa.");
-		}
-		Optional<BancoEntity> possivelBanco = bancoService.findById(atualizacaoAgencia.getCodBanco());
-		if (possivelBanco.isEmpty()) {
-			throw new NotFoundException("codBanco", "Não existe banco para o código banco.");
-		}
-		
-		possivelAgencia.get().atualizar(possivelBanco.get(), 
-				atualizacaoAgencia.getCodAgencia(), 
-				atualizacaoAgencia.getAgenciaCentralizadora(), 
-				atualizacaoAgencia.getSituacaoAgenciaRetorno());
-		return update(possivelAgencia.get());
 	}
 
 	public void deleteById(Integer codPessoa) {

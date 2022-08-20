@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.controller;
+package br.org.curitiba.ici.gtm.web.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.curitiba.ici.gtm.controller.request.PaginationRequest;
-import br.org.curitiba.ici.gtm.controller.response.PessoaResponse;
 import br.org.curitiba.ici.gtm.service.PessoaService;
+import br.org.curitiba.ici.gtm.web.controller.request.PaginationRequest;
+import br.org.curitiba.ici.gtm.web.controller.response.PessoaResponse;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

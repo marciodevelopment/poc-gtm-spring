@@ -8,7 +8,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.org.curitiba.ici.gtm.entity.BancoEntity;
-import br.org.curitiba.ici.gtm.repositorys.BancoRepository;
+import br.org.curitiba.ici.gtm.repository.BancoRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

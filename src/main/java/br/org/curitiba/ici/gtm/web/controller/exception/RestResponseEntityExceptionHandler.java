@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.controller.exception;
+package br.org.curitiba.ici.gtm.web.controller.exception;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import br.org.curitiba.ici.gtm.exceptions.ConstraintViolationException;
-import br.org.curitiba.ici.gtm.exceptions.NotFoundException;
+import br.org.curitiba.ici.gtm.exception.ConstraintViolationException;
+import br.org.curitiba.ici.gtm.exception.NotFoundException;
 
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler {

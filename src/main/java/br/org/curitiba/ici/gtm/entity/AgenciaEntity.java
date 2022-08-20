@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -57,11 +58,16 @@ public class AgenciaEntity implements Serializable {
 		this.agenciaCentralizadora = agenciaCentralizadora;
 	}
 
-	public void atualizar(BancoEntity banco, Integer codAgencia, Boolean agenciaCentralizadora, String situacaoAgenciaRetorno) {
+	public AgenciaEntity atualizar(
+			@NotNull BancoEntity banco, 
+			int codAgencia, 
+			boolean agenciaCentralizadora, 
+			String situacaoAgenciaRetorno) {
 		this.banco = banco;
 		this.codAgencia = codAgencia;
 		this.agenciaCentralizadora = agenciaCentralizadora;
 		this.situacaoAgenciaRetorno = situacaoAgenciaRetorno;
+		return this;
 	}
 
 	

@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.controller.exception;
+package br.org.curitiba.ici.gtm.web.controller.exception;
 
 import java.util.ArrayList;
 import java.util.List;

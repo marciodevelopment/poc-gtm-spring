@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.org.curitiba.ici.gtm.entity.PessoaEntity;
-import br.org.curitiba.ici.gtm.repositorys.PessoaRepository;
+import br.org.curitiba.ici.gtm.repository.PessoaRepository;
 import br.org.curitiba.ici.gtm.type.OrderDirection;
 import lombok.RequiredArgsConstructor;
 

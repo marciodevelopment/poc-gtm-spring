@@ -1,10 +1,9 @@
-package br.org.curitiba.ici.gtm.controller.request;
+package br.org.curitiba.ici.gtm.web.controller.request;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import br.org.curitiba.ici.gtm.entity.vo.IAtualizacaoAgencia;
 import br.org.curitiba.ici.gtm.validation.constraints.ValoresPermitidosString;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AtualizacaoAgenciaRequest implements IAtualizacaoAgencia {
+public class AtualizacaoAgenciaRequest {
 	
 	@NotNull(message = "Código banco não pode ser nulo")
 	private Integer codBanco;

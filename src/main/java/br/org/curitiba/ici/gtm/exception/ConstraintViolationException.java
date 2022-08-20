@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.exceptions;
+package br.org.curitiba.ici.gtm.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

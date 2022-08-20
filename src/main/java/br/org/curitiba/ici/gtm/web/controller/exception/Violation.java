@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.controller.exception;
+package br.org.curitiba.ici.gtm.web.controller.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
