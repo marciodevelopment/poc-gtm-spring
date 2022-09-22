@@ -1,16 +1,18 @@
 package br.org.curitiba.ici.gtm.web.controller.response;
 
-import br.org.curitiba.ici.gtm.entity.PessoaEntity;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
-public class PessoaResponse {
+@Setter
+@NoArgsConstructor
+@Relation(itemRelation = "pessoa", collectionRelation = "pessoas")
+public class PessoaResponse extends RepresentationModel<PessoaResponse> {
 	private Integer codPessoa;
 	private String nomePessoa;
-	
-	public PessoaResponse(PessoaEntity pessoaEntity) {
-		this.codPessoa = pessoaEntity.getCodPessoa();
-		this.nomePessoa = pessoaEntity.getNomePessoa();
-	}
 	
 }

@@ -4,7 +4,7 @@ package br.org.curitiba.ici.gtm.web.controller;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +18,7 @@ import org.springframework.http.HttpStatus;
 
 import br.org.curitiba.ici.gtm.web.controller.request.AtualizacaoAgenciaRequest;
 import br.org.curitiba.ici.gtm.web.controller.request.NovaAgenciaRequest;
-import br.org.curitiba.ici.gtm.web.controller.response.AgenciaResponse;
+import br.org.curitiba.ici.gtm.web.controller.response.PesquisaAgenciaResponse;
 import io.restassured.http.ContentType;
 
 
@@ -119,16 +119,16 @@ class AgenciaControllerIntegrationTest {
 	
 	@Test
 	void deveEncontrarUmaPessoaParaPrimeiraPaginaDeTamanho1() {
-		@SuppressWarnings("unchecked")
-		ArrayList<AgenciaResponse> agencias = given()
+		List<PesquisaAgenciaResponse> agencias = given()
         .contentType(ContentType.JSON)
         .when()
         .queryParam("page", 0)
         .queryParam("pageSize", 1)
         .get(url)
         .then()
-        .extract().response().as(new ArrayList<>().getClass());
-		Assertions.assertEquals(1, agencias.size());
+        .extract()
+        .jsonPath().get("_embedded.agencias");
+        Assertions.assertEquals(1, agencias.size());
 	}
 	
 

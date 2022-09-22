@@ -4,14 +4,14 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import br.org.curitiba.ici.gtm.validation.constraints.ValoresPermitidosString;
+import br.org.curitiba.ici.gtm.annotation.ValoresPermitidosString;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class AtualizacaoAgenciaRequest {

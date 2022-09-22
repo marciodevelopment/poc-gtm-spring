@@ -1,9 +1,11 @@
-package br.org.curitiba.ici.gtm.validation.constraints;
+package br.org.curitiba.ici.gtm.annotation.validator;
 
 import java.util.stream.Stream;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import br.org.curitiba.ici.gtm.annotation.ValoresPermitidosString;
 
 public class ValoresPermitidosStringValidator implements ConstraintValidator<ValoresPermitidosString, String> {
 

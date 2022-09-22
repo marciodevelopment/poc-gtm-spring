@@ -1,26 +1,22 @@
 package br.org.curitiba.ici.gtm.web.controller.response;
 
-import br.org.curitiba.ici.gtm.entity.AgenciaEntity;
-import lombok.Getter;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
 @Getter
-public class AgenciaResponse {
-	private Integer codPessoa;
-	private Integer codBanco;
+@Setter
+@Relation(itemRelation = "agencia", collectionRelation = "agencias")
+public class AgenciaResponse extends RepresentationModel<AgenciaResponse> {
+	private PessoaResponse pessoa;
+	private BancoResponse banco;
+	
 	private Integer codAgencia;
 	private String situacaoAgenciaRetorno;
 	private Boolean agenciaCentralizadora;
-	private String nomeBanco;
-	private String nomePessoa;
-
-	public AgenciaResponse(AgenciaEntity agencia) {
-		this.codPessoa = agencia.getPessoa().getCodPessoa();
-		this.nomePessoa =  agencia.getPessoa().getNomePessoa();
-		this.codBanco = agencia.getBanco().getCodBanco();
-		this.nomeBanco = agencia.getBanco().getNomeBanco();
-		this.codAgencia = agencia.getCodAgencia();
-		this.situacaoAgenciaRetorno = agencia.getSituacaoAgenciaRetorno();
-		this.agenciaCentralizadora = agencia.getAgenciaCentralizadora();
-	}
 	
 }

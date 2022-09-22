@@ -1,4 +1,4 @@
-package br.org.curitiba.ici.gtm.validation.constraints;
+package br.org.curitiba.ici.gtm.annotation;
 
 
 
@@ -10,6 +10,8 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+
+import br.org.curitiba.ici.gtm.annotation.validator.ExistsIdValidator;
 
 
 @Documented

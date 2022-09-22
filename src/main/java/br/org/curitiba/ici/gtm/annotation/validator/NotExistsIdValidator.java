@@ -1,9 +1,11 @@
-package br.org.curitiba.ici.gtm.validation.constraints;
+package br.org.curitiba.ici.gtm.annotation.validator;
 
 
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import br.org.curitiba.ici.gtm.annotation.NotExistsId;
 
 public class NotExistsIdValidator implements ConstraintValidator<NotExistsId, Object> {
 	private String domainAttribute;

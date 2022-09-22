@@ -4,22 +4,17 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import br.org.curitiba.ici.gtm.entity.AgenciaEntity;
-import br.org.curitiba.ici.gtm.entity.BancoEntity;
-import br.org.curitiba.ici.gtm.entity.PessoaEntity;
-import br.org.curitiba.ici.gtm.service.BancoService;
-import br.org.curitiba.ici.gtm.service.PessoaService;
-import br.org.curitiba.ici.gtm.validation.constraints.ValoresPermitidosString;
+import br.org.curitiba.ici.gtm.annotation.ValoresPermitidosString;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class NovaAgenciaRequest {
+	
+
 	@NotNull(message = "Código pessoa não pode ser nulo")
 	private Integer codPessoa;
 	
@@ -37,11 +32,6 @@ public class NovaAgenciaRequest {
 	@NotNull(message = "Agencia Centralizadora não pode ser nulo")
 	private Boolean agenciaCentralizadora;
 
-	public AgenciaEntity toModel(PessoaService pessoaService, BancoService bancoService) {
-		BancoEntity banco = bancoService.getReference(getCodBanco());
-		PessoaEntity pessoa = pessoaService.getReference(getCodPessoa());
-		AgenciaEntity agencia = new AgenciaEntity(pessoa, banco, getCodAgencia(), getAgenciaCentralizadora());
-		agencia.setSituacaoAgenciaRetorno(getSituacaoAgenciaRetorno());
-		return agencia;
-	}
+	
+	
 }

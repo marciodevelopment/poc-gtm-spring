@@ -6,7 +6,11 @@ package br.org.curitiba.ici.gtm.web.controller.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import br.org.curitiba.ici.gtm.type.OrderDirection;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.util.StringUtils;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,7 +25,12 @@ public class PaginationRequest {
 	private String direction = "asc";
 	private String sortField;
 	
-	public OrderDirection getDirection() {
-		return OrderDirection.fromString(direction);
+	
+	public Pageable toPageable() {
+		if (StringUtils.hasText(direction) && StringUtils.hasText(sortField)) {
+			Sort sort = Sort.by(direction, sortField);
+			return PageRequest.of(page, pageSize, sort);
+		}
+		return PageRequest.of(page, pageSize);
 	}
 }

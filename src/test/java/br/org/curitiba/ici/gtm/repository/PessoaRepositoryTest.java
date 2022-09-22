@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import br.org.curitiba.ici.gtm.entity.PessoaEntity;
-import br.org.curitiba.ici.gtm.repository.PessoaRepository;
 
 @SpringBootTest
 class PessoaRepositoryTest {

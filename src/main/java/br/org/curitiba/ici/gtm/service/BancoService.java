@@ -3,6 +3,8 @@ package br.org.curitiba.ici.gtm.service;
 import java.util.Collection;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
@@ -28,8 +30,12 @@ public class BancoService {
 		return !bancoRepository.existsById(banco.getCodBanco());
 	}
 
-	public Optional<BancoEntity> findById(Integer codBanco) {
+	public Optional<BancoEntity> findByOptionalId(Integer codBanco) {
 		return bancoRepository.findById(codBanco);
+	}
+	
+	public BancoEntity findById(Integer codBanco) {
+		return bancoRepository.findById(codBanco).orElseThrow(() -> new EntityNotFoundException("Banco não encontrado para o código banco enviado"));
 	}
 
 }

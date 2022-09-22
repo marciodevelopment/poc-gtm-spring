@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +12,6 @@ import br.org.curitiba.ici.gtm.entity.AgenciaEntity;
 import br.org.curitiba.ici.gtm.exception.ConstraintViolationException;
 import br.org.curitiba.ici.gtm.exception.NotFoundException;
 import br.org.curitiba.ici.gtm.repository.AgenciaRepository;
-import br.org.curitiba.ici.gtm.type.OrderDirection;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -37,14 +35,20 @@ public class AgenciaService {
 		}
 	}
 
-	public Collection<AgenciaEntity> pesquisar(Optional<String> nomePessoa, OrderDirection direction, int page,
-			int pageSize) {
-		Pageable pageable = PageRequest.of(page, pageSize);
+	
+	public Collection<AgenciaEntity> pesquisar(Optional<String> nomePessoa, Pageable pageable) {
 		return agenciaRepository.findByPessoa_nomePessoaStartingWithOrderByPessoa_nomePessoaAsc(nomePessoa.orElse("").toUpperCase(), pageable);
 	}
-
+	
+	
 	public Optional<AgenciaEntity> findByIdOptional(Integer codPessoa) {
 		return agenciaRepository.findById(codPessoa);
+	}
+	
+	public AgenciaEntity findById(Integer codPessoa) {
+		return 
+				agenciaRepository.findById(codPessoa)
+				.orElseThrow(() -> new NotFoundException("codPessoa", "Pessoa não encontrada para o código enviado"));
 	}
 
 	public AgenciaEntity update(AgenciaEntity request) {
@@ -58,4 +62,6 @@ public class AgenciaService {
 		}
 		agenciaRepository.deleteById(codPessoa);
 	}
+
+	
 }

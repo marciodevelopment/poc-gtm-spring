@@ -1,16 +1,17 @@
 package br.org.curitiba.ici.gtm.web.controller;
 
+import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
 import br.org.curitiba.ici.gtm.web.controller.response.PessoaResponse;
+import io.restassured.http.ContentType;
 
 // https://marco.dev/spring-boot-test-controller
 
@@ -18,15 +19,24 @@ import br.org.curitiba.ici.gtm.web.controller.response.PessoaResponse;
 class PessoaControllerIntegrationTest {
 	@LocalServerPort 
 	private int port;
+	
+	private String url; 
 
-	@Autowired 
-	private TestRestTemplate restTemplate; 
+
+	@BeforeEach
+	void before() {
+		url = "http://localhost:" + port + "/pessoas";
+	}
 
 	@Test 
 	void getTest() { 
-		@SuppressWarnings("unchecked")
-		List<PessoaResponse> pessoas = restTemplate 
-		.getForObject("http://localhost:" + port + "/pessoas", List.class);
+		List<PessoaResponse> pessoas = given()
+		        .contentType(ContentType.JSON)
+		        .when()
+		        .get(url)
+		        .then()
+		        .extract()
+		        .jsonPath().get("_embedded.pessoas");
 		assertThat(pessoas).isNotEmpty();
 
 	} 
